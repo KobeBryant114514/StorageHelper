@@ -1,0 +1,2 @@
+amulet-leveldb>=1.0.2
+rapidnbt>=1.0.1
