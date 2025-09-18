@@ -1,4 +1,8 @@
 # StorageHelper
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/KobeBryant114514/StorageHelper/build.yml)](https://github.com/KobeBryant114514/StorageHelper/actions)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/KobeBryant114514/StorageHelper/total)
+
+
 Minecraft Bedrock Storage Helper
 
 ## Quick Start 🚀
