@@ -1,0 +1,34 @@
+on: 
+  push:
+    paths:
+      - .github/workflows/build.yml
+      - main.py
+      - main.spec
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build on Windows (X86_64)
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Build StorageHelper
+        run: |
+          pip install -r requirements.txt
+          pip install pyinstaller
+          pyinstaller main.spec
+          powershell -Command "Compress-Archive -Path dist/StorageHelper.exe -DestinationPath dist/StorageHelper-windows-x86_64.zip"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: StorageHelper-windows-x86_64-${{ github.sha }}
+          path: dist/StorageHelper-windows-x86_64.zip
