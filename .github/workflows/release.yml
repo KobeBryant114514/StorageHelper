@@ -44,7 +44,7 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
-          name: StorageHelper-windows-x86_64.zip
+          name: StorageHelper-windows-x86_64-${{ github.sha }}
           path: artifact
       
       - name: Upload to Release

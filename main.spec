@@ -86,8 +86,6 @@ a = Analysis(
 )
 
 a.binaries = _fix_binaries(a.binaries)
-print(a.binaries)
-print(len(a.binaries))
 
 pyz = PYZ(a.pure, a.zipped_data)
 
