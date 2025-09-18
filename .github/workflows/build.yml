@@ -23,10 +23,13 @@ jobs:
 
       - name: Build StorageHelper
         run: |
+          $url = "https://github.com/upx/upx/releases/download/v5.0.2/upx-5.0.2-win64.zip"
+          Invoke-WebRequest -Uri $url -OutFile upx.zip
+          Expand-Archive -Path upx.zip -DestinationPath upx
           pip install -r requirements.txt
           pip install pyinstaller
-          pyinstaller main.spec
-          powershell -Command "Compress-Archive -Path dist/StorageHelper.exe -DestinationPath dist/StorageHelper-windows-x86_64.zip"
+          pyinstaller --upx-dir=upx/upx-5.0.2-win64 main.spec
+          Compress-Archive -Path dist/StorageHelper.exe -DestinationPath dist/StorageHelper-windows-x86_64.zip
 
       - uses: actions/upload-artifact@v4
         with:
